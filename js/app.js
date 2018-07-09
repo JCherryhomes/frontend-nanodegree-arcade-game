@@ -87,14 +87,14 @@ class Player {
         // Using timeout to allow time for the user to see the player object movement
         // before it gets reset on collision
         setTimeout(function () {
-            player = new Player();
+            resetPlayer();
         }, 50);
     }
 
     handleVictory() {
         // show victory message and reset the player object
         alert('YOU WIN!!');
-        player = new Player();
+        resetPlayer();
     }
 
     handleInput(direction) {
@@ -130,6 +130,10 @@ function randomPosition() {
 
 function renderObject(sprite, x, y) {
     ctx.drawImage(Resources.get(sprite), x, y);
+}
+
+function resetPlayer() {
+    player = new Player();
 }
 
 // Now instantiate your objects. Place all enemy objects in an array called
