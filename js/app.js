@@ -42,7 +42,7 @@ class Enemy {
 
     // Draw the enemy on the screen, required method for game
     render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        renderObject(this.sprite, this.x, this.y);
     }
 }
 
@@ -80,7 +80,7 @@ class Player {
     }
 
     render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x.current, this.y.current);
+        renderObject(this.sprite, this.x.current, this.y.current);
     }
 
     handleCollision() {
@@ -118,7 +118,7 @@ class Player {
             
         // Reset player if they move into the water
         if (this.y.current <= this.y.min) {
-            player.update(false, true);
+            this.update(false, true);
         }
     }
 }
@@ -126,6 +126,10 @@ class Player {
 // Function to generate a random starting position for the enemy objects
 function randomPosition() {
     return Math.floor(Math.random() * -2500);
+}
+
+function renderObject(sprite, x, y) {
+    ctx.drawImage(Resources.get(sprite), x, y);
 }
 
 // Now instantiate your objects. Place all enemy objects in an array called
